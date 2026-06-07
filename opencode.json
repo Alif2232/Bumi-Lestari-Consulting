@@ -1,0 +1,158 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "deepseek-v4-flash-free",
+  "default_agent": "implementor",
+  "permission": {
+    "edit": "ask",
+    "bash": "ask",
+    "webfetch": "allow",
+    "websearch": "allow",
+    "skill": {
+      "*": "allow",
+      "experimental-*": "ask"
+    }
+  },
+  "agent": {
+    "planner": {
+      "mode": "primary",
+      "model": "deepseek-v4-flash-free",
+      "prompt": "{file:./.opencode/agents/planner.md}",
+      "temperature": 0.2,
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow"
+      }
+    },
+    "implementor": {
+      "mode": "primary",
+      "model": "deepseek-v4-flash-free",
+      "prompt": "{file:./.opencode/agents/implementor.md}",
+      "temperature": 0.3
+    },
+    "debater": {
+      "description": "Discusses architectural tradeoffs without making code changes",
+      "mode": "subagent",
+      "model": "deepseek-v4-flash-free",
+      "prompt": "{file:./.opencode/agents/debater.md}",
+      "temperature": 0.6,
+      "permission": {
+        "edit": "deny",
+        "bash": "deny"
+      }
+    },
+    "reviewer": {
+      "description": "Reviews code for quality, best practices, and potential issues",
+      "mode": "subagent",
+      "model": "deepseek-v4-flash-free",
+      "prompt": "{file:./.opencode/agents/reviewer.md}",
+      "temperature": 0.1,
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "*": "ask",
+          "git diff*": "allow",
+          "git log*": "allow"
+        }
+      }
+    },
+    "tester": {
+      "description": "Writes and runs unit, integration, and end-to-end tests",
+      "mode": "subagent",
+      "model": "deepseek-v4-flash-free",
+      "prompt": "{file:./.opencode/agents/tester.md}",
+      "temperature": 0.2,
+      "permission": {
+        "edit": "ask",
+        "bash": {
+          "*": "ask",
+          "npm test*": "allow",
+          "pnpm test*": "allow",
+          "pytest*": "allow",
+          "go test*": "allow",
+          "flutter test*": "allow",
+          "yarn test*": "allow"
+        }
+      }
+    },
+    "linter": {
+      "description": "Runs linters and formatters; auto-fixes safe issues",
+      "mode": "subagent",
+      "model": "deepseek-v4-flash-free",
+      "prompt": "{file:./.opencode/agents/linter.md}",
+      "temperature": 0.1,
+      "permission": {
+        "edit": "ask",
+        "bash": {
+          "*": "ask",
+          "eslint*": "allow",
+          "prettier*": "allow",
+          "ruff*": "allow",
+          "black*": "allow",
+          "gofmt*": "allow",
+          "golangci-lint*": "allow",
+          "flutter analyze*": "allow",
+          "tsc*": "allow"
+        }
+      }
+    },
+    "commit-message": {
+      "description": "Generates conventional commit messages from staged changes",
+      "mode": "subagent",
+      "model": "minimax-m3-free",
+      "prompt": "{file:./.opencode/agents/commit-message.md}",
+      "temperature": 0.2,
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "*": "ask",
+          "git diff*": "allow",
+          "git status*": "allow",
+          "git log*": "allow",
+          "git add*": "allow"
+        }
+      }
+    },
+    "security-auditor": {
+      "description": "Performs security audits and identifies vulnerabilities",
+      "mode": "subagent",
+      "model": "deepseek-v4-flash-free",
+      "prompt": "{file:./.opencode/agents/security-auditor.md}",
+      "temperature": 0.1,
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "*": "ask",
+          "git diff*": "allow",
+          "git log*": "allow"
+        }
+      }
+    },
+    "doc-writer": {
+      "description": "Writes and maintains project documentation",
+      "mode": "subagent",
+      "model": "minimax-m3-free",
+      "prompt": "{file:./.opencode/agents/doc-writer.md}",
+      "temperature": 0.3,
+      "permission": {
+        "edit": "ask",
+        "bash": "deny"
+      }
+    },
+    "refactor-helper": {
+      "description": "Suggests and executes safe refactors (DRY, naming, structure)",
+      "mode": "subagent",
+      "model": "deepseek-v4-flash-free",
+      "prompt": "{file:./.opencode/agents/refactor-helper.md}",
+      "temperature": 0.2,
+      "permission": {
+        "edit": "ask",
+        "bash": {
+          "*": "ask",
+          "git diff*": "allow"
+        }
+      }
+    }
+  }
+}
