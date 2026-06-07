@@ -42,6 +42,60 @@ A polyglot, multi-stack application combining:
 
 ---
 
+## Cara Menggunakan Repo Ini
+
+### Clone & Setup
+
+```bash
+# 1. Clone repository
+git clone https://github.com/Alif2232/workflow-ai-gw.git
+cd workflow-ai-gw
+
+# 2. Buka dengan OpenCode (pastikan sudah terinstall)
+opencode
+
+# 3. OpenCode akan otomatis membaca konfigurasi dari opencode.json
+#    dan AGENTS.md — kamu bisa langsung menggunakan perintah:
+#    /plan, /review, /test, /commit
+```
+
+### Struktur perintah harian
+
+| Perintah | Fungsi |
+|---|---|
+| `@planner` atau `/plan` | Buat rencana implementasi sebelum coding |
+| `@implementor` | Eksekusi kode (mode default) |
+| `@reviewer` | Review kode sebelum commit |
+| `@tester` | Tulis & jalankan test |
+| `@linter` | Format & lint kode |
+| `/commit` | Generate pesan commit & commit otomatis |
+
+### Alur kerja standar
+
+```
+1. /plan           → rencanakan fitur yang akan dibuat
+2. @implementor    → tulis kode sesuai rencana
+3. @reviewer       → review hasil kode
+4. @tester         → tambahkan test
+5. /commit         → commit perubahan
+```
+
+### Multi-stack quick reference
+
+| Stack | Lokasi | Command utama |
+|---|---|---|
+| Next.js Web | `apps/web` | `pnpm dev` |
+| Streamlit | `apps/streamlit` | `streamlit run app.py` |
+| React Native | `apps/mobile-rn` | `pnpm start` |
+| Flutter | `apps/mobile-flutter` | `flutter run` |
+| Node.js API | `services/api-node` | `pnpm dev` |
+| Python API | `services/api-python` | `uvicorn main:app --reload` |
+| Go API | `services/api-go` | `go run .` |
+
+> **Catatan:** Folder `apps/` dan `services/` akan terisi seiring perkembangan proyek. Saat ini repo berisi konfigurasi OpenCode dan struktur dasar monorepo.
+
+---
+
 ## Workflow (Plan-First)
 
 We follow a **plan-first, quality-gated** workflow:
