@@ -1,0 +1,68 @@
+// ============================================
+// 📁 apps/web/tailwind.config.ts
+// ============================================
+// Nama       : Konfigurasi Tailwind CSS
+// Fungsi     : Mendaftarkan warna kustom, font, dan animasi
+//              untuk brand Bumi Lestari Consulting
+// ============================================
+
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  // 👆 content: memberitahu Tailwind file mana saja yang
+  //    harus di-scan untuk class CSS yang dipakai
+
+  theme: {
+    extend: {
+      // 👇 colors: palet warna khas Bumi Lestari Consulting
+      //    Hijau hutan + Emas panen + Krem hangat + Terracotta
+      colors: {
+        brand: {
+          primary:   "#1B3A2D",  // Hijau hutan — warna utama
+          secondary: "#C8963E",  // Emas panen — aksen & highlight
+          accent:    "#C45A3C",  // Terracotta — tombol CTA
+          sage:      "#8BA888",  // Hijau sage — background seksi
+          "sage-light": "#D4E0CF", // Sage terang — latar soft
+          cream:     "#F8F5F0",  // Krem hangat — background utama
+          "cream-dark": "#EDE6DA", // Krem gelap — footer
+          dark:      "#1A1A1A",  // Hampir hitam — teks & latar gelap
+        },
+      },
+
+      // 👇 fontFamily: menggunakan DM Serif untuk judul
+      //    dan DM Sans untuk body (satu foundry, harmonis)
+      fontFamily: {
+        serif: ['"DM Serif Display"', "Georgia", "serif"],
+        sans: ['"DM Sans"', "system-ui", "sans-serif"],
+      },
+
+      // 👇 animation: animasi kustom untuk website
+      animation: {
+        "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+        "spin-slow": "spin 30s linear infinite",
+        float: "float 20s ease-in-out infinite",
+      },
+
+      // 👇 keyframes: definisi detail animasi di atas
+      keyframes: {
+        fadeInUp: {
+          "0%":   { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "33%":      { transform: "translateY(-30px) rotate(5deg)" },
+          "66%":      { transform: "translateY(10px) rotate(-3deg)" },
+        },
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;

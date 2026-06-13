@@ -1,0 +1,82 @@
+/* ============================================
+   📁 apps/web/src/app/globals.css
+   ============================================ */
+/* Nama       : Global Styles
+   Fungsi     : CSS global untuk seluruh website
+   Penjelasan : Berisi Tailwind directives, import font Google,
+                dan style global dasar
+   ============================================ */
+
+/* 👇 Tailwind directives — wajib untuk semua project Next.js + Tailwind */
+/*    @tailwind base   : style dasar (reset CSS, typography default)
+       @tailwind components : class komponen reusable
+       @tailwind utilities  : class utility (p-4, text-center, dll) */
+@import "tailwindcss";
+
+/* 👇 Tailwind v4: konfigurasi custom via CSS */
+/*    font-family menggunakan CSS variable dari next/font (self-hosted, lebih cepat) */
+@theme {
+  --color-brand-primary: #1B3A2D;
+  --color-brand-secondary: #C8963E;
+  --color-brand-accent: #C45A3C;
+  --color-brand-sage: #8BA888;
+  --color-brand-sage-light: #D4E0CF;
+  --color-brand-cream: #F8F5F0;
+  --color-brand-cream-dark: #EDE6DA;
+  --color-brand-dark: #1A1A1A;
+
+  --font-family-serif: var(--font-serif);
+  --font-family-sans: var(--font-sans);
+
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  --animate-spin-slow: spin 30s linear infinite;
+  --animate-float: float 20s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33%      { transform: translateY(-30px) rotate(5deg); }
+  66%      { transform: translateY(10px) rotate(-3deg); }
+}
+
+/* 👇 Style dasar untuk scrolling halus */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 👇 Style dasar body */
+body {
+  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
+  color: #3C3C3C;
+  background-color: var(--color-brand-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif, h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif, 'DM Serif Display', Georgia, serif);
+}
+
+/* 👇 Utility class: container dengan max-width konsisten */
+.container-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 👇 Animasi scroll-reveal (muncul saat di-scroll ke elemen) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

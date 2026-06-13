@@ -1,194 +1,291 @@
-# AI Coding Agent Project
-
-> **This project uses [OpenCode](https://opencode.ai) as the primary AI coding agent.**
-> All team members MUST read this document and `AGENTS.md` before contributing.
-
----
-
-## What is this project?
-
-A polyglot, multi-stack application combining:
-
-| Layer | Technologies |
-|---|---|
-| **Frontend (Web)** | Next.js, Vercel AI SDK, Streamlit |
-| **Mobile** | React Native, Flutter |
-| **Backend** | Python, Node.js / TypeScript, Go |
-| **Data** | PostgreSQL, MongoDB, Redis, Vector Database |
-
----
-
-## Quickstart (for new team members)
-
-1. **Install OpenCode** (terminal AI coding agent)
-   ```bash
-   # Windows
-   choco install opencode
-   # or
-   npm install -g opencode-ai
-   ```
-2. **Configure provider** in OpenCode TUI:
-   ```
-   /connect
-   ```
-   Choose `opencode` and authenticate at [opencode.ai/auth](https://opencode.ai/auth).
-3. **Clone this repository** and open it in OpenCode:
-   ```bash
-   cd /path/to/this/project
-   opencode
-   ```
-4. **Verify configuration loaded** — the `@` menu should show all 10 subagents:
-   `planner, debater, implementor, reviewer, tester, linter, commit-message, security-auditor, doc-writer, refactor-helper`
+<div align="center">
+  <h1>🌾 Bumi Lestari Consulting</h1>
+  <p><strong>Mitra Strategis untuk Agribisnis Berkelanjutan</strong></p>
+  <p>
+    <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js" alt="Next.js 15"></a>
+    <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.7-blue?style=flat-square&logo=typescript" alt="TypeScript"></a>
+    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind-4-38bdf8?style=flat-square&logo=tailwindcss" alt="Tailwind CSS v4"></a>
+    <a href="https://www.prisma.io/"><img src="https://img.shields.io/badge/Prisma-7.8-2d3748?style=flat-square&logo=prisma" alt="Prisma"></a>
+    <a href="https://next-auth.js.org/"><img src="https://img.shields.io/badge/NextAuth-4.24-000000?style=flat-square" alt="NextAuth.js"></a>
+    <a href="https://zod.dev/"><img src="https://img.shields.io/badge/Zod-4-3068b7?style=flat-square&logo=zod" alt="Zod"></a>
+    <a href="https://www.sqlite.org/"><img src="https://img.shields.io/badge/SQLite-3-003b57?style=flat-square&logo=sqlite" alt="SQLite"></a>
+  </p>
+  <p>
+    <a href="https://bumilestari.co.id">🌐 bumilestari.co.id</a> &nbsp;|&nbsp;
+    <a href="mailto:hello@bumilestari.co.id">📧 hello@bumilestari.co.id</a>
+  </p>
+</div>
 
 ---
 
-## Cara Menggunakan Repo Ini
+## 📋 Tentang Perusahaan
 
-### Clone & Setup
+**Bumi Lestari Consulting** adalah perusahaan konsultan pertanian profesional yang berbasis di Indonesia. Kami menjembatani kesenjangan antara praktik pertanian tradisional dengan teknologi modern, membantu petani, pemerintah daerah, dan investor untuk mencapai produktivitas pertanian yang optimal dan berkelanjutan.
+
+### Sektor Layanan
+
+| Sektor | Deskripsi |
+|--------|-----------|
+| **B2F** (Business to Farmer) | Konsultasi langsung ke petani dan kelompok tani — analisis lahan, manajemen hama, pelatihan |
+| **B2G** (Business to Government) | Pendampingan program ketahanan pangan pemerintah pusat dan daerah |
+| **Investor** | Feasibility study, pencarian lahan, dan pengelolaan proyek agribisnis |
+
+### Area Keahlian
+
+- 🌾 **Konsultasi & Analisis Lahan** — Analisis kesuburan tanah, pemetaan lahan, rekomendasi komoditas
+- 🧪 **Manajemen Hama & Penyakit** — Deteksi dini, pengendalian hama terpadu (PHT)
+- 👥 **Pelatihan & Pendampingan** — Program pelatihan petani, sekolah lapang
+- 🏛️ **Pendampingan Program Pemerintah** — Program ketahanan pangan, bantuan benih & pupuk
+- 📊 **Audit & Evaluasi Lahan** — Audit produktivitas, analisis kelayakan investasi
+- 🤝 **Kemitraan & Investasi** — Menjembatani investor dengan petani
+
+---
+
+## 🚀 Tech Stack
+
+| Teknologi | Versi | Fungsi |
+|-----------|-------|--------|
+| [Next.js](https://nextjs.org/) | 15 | React framework (App Router, Server Components) |
+| [TypeScript](https://www.typescriptlang.org/) | 5.7 | Type safety |
+| [Tailwind CSS](https://tailwindcss.com/) | 4 | Utility-first CSS (zero-config, CSS-only) |
+| [Prisma](https://www.prisma.io/) | 7.8 | ORM — database management |
+| [SQLite](https://www.sqlite.org/) | 3 | Database development (PostgreSQL untuk production) |
+| [NextAuth.js](https://next-auth.js.org/) | 4.24 | Autentikasi admin |
+| [Zod](https://zod.dev/) | 4 | Validasi form (client + server) |
+| [Resend](https://resend.com/) | 6 | Email notification |
+| [Lucide React](https://lucide.dev/) | 0.460 | Icon library |
+
+### Arsitektur
+
+```
+📦 Bumi-Lestari-Consulting
+├── 🎨 apps/web          — Frontend & Backend (Next.js monolitik)
+│   ├── 🖥️  App Router  — 15 rute (7 static + 8 dynamic)
+│   ├── 🗄️  Prisma      — Schema + ORM
+│   ├── 🔐 NextAuth     — Admin authentication
+│   └── 📧 Resend       — Email notification
+├── 📦 packages/         — Shared libraries (future)
+├── 🛠️  services/       — Microservices (future)
+└── ⚙️  infra/          — Infrastructure (future)
+```
+
+---
+
+## ✨ Fitur Website
+
+### Publik
+| Fitur | Rute | Status |
+|-------|------|--------|
+| 🏠 **Beranda** — Hero, statistik, layanan, proyek, testimoni, CTA investor | `/` | ✅ |
+| 📋 **Layanan** — 6 layanan utama + detail per layanan | `/layanan`, `/layanan/[slug]` | ✅ |
+| 👥 **Tentang Kami** — Profil perusahaan, tim, visi-misi | `/tentang` | ✅ |
+| 📝 **Blog** — 6 artikel + detail artikel | `/blog`, `/blog/[id]` | ✅ |
+| 💼 **Karir** — Lowongan pekerjaan | `/karir` | ✅ |
+| 📬 **Kontak** — Form kontak dengan validasi + API + notifikasi email | `/kontak` | ✅ |
+
+### Admin (terproteksi)
+| Fitur | Rute | Status |
+|-------|------|--------|
+| 🔐 **Login** — Autentikasi admin via NextAuth | `/admin/login` | ✅ |
+| 📊 **Dashboard** — Statistik + lead terbaru | `/admin` | ✅ |
+| 📨 **Lead Masuk** — Data form kontak dari database | `/admin/leads` | ✅ |
+| 📁 **Proyek** — CRUD manajemen proyek portofolio | `/admin/proyek` | ✅ |
+
+### API
+| Endpoint | Method | Fungsi |
+|----------|--------|--------|
+| `/api/auth/[...nextauth]` | GET/POST | Autentikasi admin |
+| `/api/lead` | POST | Kirim data form kontak (validasi + simpan DB + email) |
+| `/api/lead` | GET | Health check |
+
+---
+
+## 🛠️ Panduan Instalasi
+
+### Prasyarat
+- **Node.js** ≥ 18.18 (recommended: 22 LTS)
+- **pnpm** ≥ 9.0 ([install guide](https://pnpm.io/installation))
+- **Git**
+
+### 1. Clone Repository
 
 ```bash
-# 1. Clone repository
-git clone https://github.com/Alif2232/workflow-ai-gw.git
-cd workflow-ai-gw
-
-# 2. Buka dengan OpenCode (pastikan sudah terinstall)
-opencode
-
-# 3. OpenCode akan otomatis membaca konfigurasi dari opencode.json
-#    dan AGENTS.md — kamu bisa langsung menggunakan perintah:
-#    /plan, /review, /test, /commit
+git clone https://github.com/Alif2232/Bumi-Lestari-Consulting.git
+cd Bumi-Lestari-Consulting
 ```
 
-### Struktur perintah harian
+### 2. Install Dependencies
 
-| Perintah | Fungsi |
-|---|---|
-| `@planner` atau `/plan` | Buat rencana implementasi sebelum coding |
-| `@implementor` | Eksekusi kode (mode default) |
-| `@reviewer` | Review kode sebelum commit |
-| `@tester` | Tulis & jalankan test |
-| `@linter` | Format & lint kode |
-| `/commit` | Generate pesan commit & commit otomatis |
-
-### Alur kerja standar
-
-```
-1. /plan           → rencanakan fitur yang akan dibuat
-2. @implementor    → tulis kode sesuai rencana
-3. @reviewer       → review hasil kode
-4. @tester         → tambahkan test
-5. /commit         → commit perubahan
+```bash
+cd apps/web
+pnpm install
 ```
 
-### Multi-stack quick reference
+### 3. Setup Environment
 
-| Stack | Lokasi | Command utama |
-|---|---|---|
-| Next.js Web | `apps/web` | `pnpm dev` |
-| Streamlit | `apps/streamlit` | `streamlit run app.py` |
-| React Native | `apps/mobile-rn` | `pnpm start` |
-| Flutter | `apps/mobile-flutter` | `flutter run` |
-| Node.js API | `services/api-node` | `pnpm dev` |
-| Python API | `services/api-python` | `uvicorn main:app --reload` |
-| Go API | `services/api-go` | `go run .` |
+```bash
+cp .env.example .env
+```
 
-> **Catatan:** Folder `apps/` dan `services/` akan terisi seiring perkembangan proyek. Saat ini repo berisi konfigurasi OpenCode dan struktur dasar monorepo.
+Edit file `.env`:
+
+```env
+# Database (SQLite untuk development — auto-generate)
+DATABASE_URL="file:./dev.db"
+
+# NextAuth
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=<generate-secure-random-string>
+
+# Resend (opsional — untuk email notifikasi lead)
+# Daftar gratis di https://resend.com
+RESEND_API_KEY=
+NOTIFICATION_EMAIL=admin@bumilestari.co.id
+```
+
+### 4. Setup Database & Seed
+
+```bash
+# Generate Prisma client + migrate database
+npx prisma migrate dev --name init
+
+# Seed data awal (admin + sample data)
+pnpm seed
+```
+
+### 5. Jalankan Development Server
+
+```bash
+pnpm dev
+```
+
+Buka [http://localhost:3000](http://localhost:3000) di browser.
+
+### 6. Login Admin
+
+| Email | Password |
+|-------|----------|
+| `admin@bumilestari.co.id` | `admin123` |
+
+> ⚠️ **Keamanan:** Ganti password segera setelah login pertama!
 
 ---
 
-## Workflow (Plan-First)
-
-We follow a **plan-first, quality-gated** workflow:
+## 📁 Struktur Proyek
 
 ```
-1. IDEATE   → @planner  (or Tab → planner primary)
-            → @debater  (for architecture tradeoffs)
-
-2. BUILD    → Tab → implementor
-            → describe the task with @file references
-
-3. REVIEW   → @reviewer
-            → @security-auditor  (for auth, API, DB changes)
-            → @linter
-
-4. TEST     → @tester
-
-5. DOCUMENT → @doc-writer
-
-6. COMMIT   → @commit-message
-            → git add . && git commit
-```
-
----
-
-## Default Models
-
-| Model | Used for |
-|---|---|
-| `deepseek-v4-flash-free` | Global default, implementor, debater, security-auditor, planner, reviewer, refactor-helper, tester, linter |
-| `minimax-m3-free` | commit-message, doc-writer (simple generation tasks) |
-
-**Model strategy:** `deepseek-v4-flash-free` is the workhorse — used for everything that needs real reasoning (code generation, architecture debate, security audit, planning, review). `minimax-m3-free` handles mechanical, low-stakes generation (commit messages, simple docs).
-
-Override per-session via `/models` in the TUI.
-
----
-
-## Repository Structure
-
-```
-.
-├── AGENTS.md              ← team-wide rules for the AI agent (READ THIS)
-├── opencode.json          ← main OpenCode configuration
-├── README.md              ← you are here
-├── .gitignore
-└── .opencode/
-    ├── agents/            ← 10 specialized subagents
-    ├── commands/          ← 4 shortcut commands (/plan, /review, /test, /commit)
-    └── skills/            ← 7 reusable knowledge packs
+apps/web/
+├── prisma/
+│   ├── schema.prisma      # Database schema
+│   └── seed.ts             # Seed data
+├── src/
+│   ├── app/
+│   │   ├── (public)/       # Halaman publik (beranda, tentang, layanan, blog, kontak, karir)
+│   │   ├── (auth)/         # Halaman autentikasi (login)
+│   │   ├── (protected)/    # Halaman admin (dashboard, leads, proyek)
+│   │   └── api/            # API routes (auth, lead)
+│   ├── components/
+│   │   ├── ui/             # Komponen primitif (Button, Card, SectionHeader)
+│   │   ├── layout/         # Layout (Navbar, Footer, WhatsAppButton)
+│   │   ├── sections/       # Section landing page (Hero, Services, Projects, dll)
+│   │   └── forms/          # Form components (ContactForm, ContactFormWrapper)
+│   ├── lib/
+│   │   ├── auth.ts         # NextAuth konfigurasi
+│   │   ├── db.ts           # Prisma client singleton
+│   │   ├── email.ts        # Email notification utility
+│   │   ├── constants.ts    # Data statis (layanan, proyek, testimoni)
+│   │   ├── validation.ts   # Zod schema validasi
+│   │   └── utils.ts        # Utility functions (cn, formatDate)
+│   └── types/
+│       └── index.ts        # TypeScript interfaces
+├── .env                    # Environment variables (jangan commit)
+├── next.config.ts          # Next.js configuration
+└── package.json            # Dependencies
 ```
 
 ---
 
-## Available Subagents
+## 🚢 Deployment
 
-| Subagent | Purpose | Permission |
-|---|---|---|
-| `planner` | Generate implementation plans | ask |
-| `debater` | Discuss architectural tradeoffs | deny edits |
-| `implementor` | Execute code (default primary) | full |
-| `reviewer` | Code review for best practices | read-only |
-| `tester` | Write & run tests | ask |
-| `linter` | Run linters & formatters | bash: ask |
-| `commit-message` | Generate conventional commits | read-only |
-| `security-auditor` | Security audit | read-only |
-| `doc-writer` | Documentation generation | ask |
-| `refactor-helper` | Refactoring suggestions | ask |
+### Vercel (Recommended)
 
----
+```bash
+# Install Vercel CLI
+pnpm add -g vercel
 
-## Available Skills (auto-loaded by context)
+# Deploy
+cd apps/web
+vercel --prod
+```
 
-| Skill | When it loads |
-|---|---|
-| `nextjs-ai-stack` | Working on Next.js / Vercel AI SDK |
-| `vector-rag-pipeline` | Building RAG / embeddings / vector search |
-| `polyglot-monorepo` | Project structure / folder layout questions |
-| `api-design` | API endpoint / REST / GraphQL / tRPC design |
-| `database-migration` | Schema / migration / Prisma / Alembic work |
-| `mobile-cross-platform` | React Native or Flutter tasks |
-| `streamlit-data-app` | Streamlit data apps or dashboards |
+Set environment variables di dashboard Vercel:
+- `DATABASE_URL` → PostgreSQL connection string (ganti dari SQLite)
+- `NEXTAUTH_URL` → https://bumilestari.co.id
+- `NEXTAUTH_SECRET` → random secure string
+- `RESEND_API_KEY` → dari Resend (untuk email notifikasi)
+- `NOTIFICATION_EMAIL` → email admin
+
+> **Catatan Production:** SQLite hanya untuk development. Untuk production, ubah provider Prisma ke `postgresql` dan gunakan database PostgreSQL (misal: Neon, Supabase, Railway).
 
 ---
 
-## Conventions
+## 🎨 Desain
 
-- **Branches**: `feature/<short-desc>`, `fix/<short-desc>`, `chore/<short-desc>`
-- **Commits**: Conventional Commits (`feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`)
-- **PRs**: Always use `/commit-message` then write a 1-paragraph PR description
+### Brand Identity
+
+| Elemen | Spesifikasi |
+|--------|-------------|
+| **Warna Utama** | Forest Green (`#1B3A2D`) |
+| **Warna Aksen** | Harvest Gold (`#C8963E`) |
+| **Warna Latar** | Warm Cream (`#F8F5F0`) |
+| **Font Judul** | DM Serif Display (serif, elegan) |
+| **Font Body** | DM Sans (sans-serif, modern) |
+
+### Performa
+
+| Metrik | Hasil |
+|--------|-------|
+| First Load JS Shared | **102 kB** |
+| Total Rute | **15** (7 static + 8 dynamic) |
+| Waktu Build | **~3-4 detik** |
+| Server Components | ✅ 5 section (Hero, Stats, Services, Projects, Testimonials) |
+| Dynamic Import | ✅ ContactForm (Zod 20 kB → 1.39 kB) |
+| Font Loading | ✅ next/font (preload, self-hosted) |
 
 ---
 
-## License
+## 🤝 Kontribusi
 
-Internal use only.
+Kami menyambut kontribusi dari tim internal. Untuk perubahan besar, silakan buat issue terlebih dahulu.
+
+1. Fork repository
+2. Buat branch fitur: `git checkout -b feat/fitur-baru`
+3. Commit perubahan: `git commit -m "feat: menambahkan fitur baru"`
+4. Push ke branch: `git push origin feat/fitur-baru`
+5. Buat Pull Request
+
+### Standar Coding
+- TypeScript strict mode
+- Komentar Bahasa Indonesia untuk setiap logika penting
+- Prettier + ESLint
+- Conventional commits
+- Test sebelum merge
+
+---
+
+## 📄 Lisensi
+
+Hak Cipta © 2026 **Bumi Lestari Consulting**. Seluruh hak cipta dilindungi.
+
+Tidak diperkenankan mendistribusikan, memodifikasi, atau menggunakan kode ini tanpa izin tertulis dari pemilik.
+
+---
+
+<div align="center">
+  <p>Dibangun dengan ❤️ untuk pertanian Indonesia</p>
+  <p>
+    <a href="https://github.com/Alif2232/Bumi-Lestari-Consulting">GitHub</a> ·
+    <a href="mailto:hello@bumilestari.co.id">Kontak</a> ·
+    <a href="https://bumilestari.co.id">Website</a>
+  </p>
+</div>
