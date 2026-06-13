@@ -16,6 +16,8 @@ import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminDashboard() {
   // 👇 Cek session (lapisan keamanan kedua — selain layout)
   const session = await getServerSession(authOptions);

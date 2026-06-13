@@ -4,12 +4,17 @@
 // Nama       : Prisma Database Schema
 // Fungsi     : Mendefinisikan struktur database untuk
 //              Bumi Lestari Consulting
-// Penjelasan : Schema ini mencakup:
-//              - User + Account + Session (untuk NextAuth.js)
-//              - Project (portofolio proyek)
-//              - Lead (data form kontak)
-//              - Testimonial (ulasan klien)
-//              Database: SQLite (development) / PostgreSQL (production)
+// Penjelasan : 
+//   🏠 Dev (local):     SQLite — tanpa setup, langsung jalan
+//   🚀 Production:      PostgreSQL — ubah provider + DATABASE_URL
+//
+// Cara switch ke PostgreSQL untuk production:
+//   1. Ganti provider: "sqlite" → "postgresql"
+//   2. Ganti DATABASE_URL di .env ke PostgreSQL connection string
+//   3. Hapus adapter BetterSqlite3 dari db.ts
+//   4. Hapus @prisma/adapter-better-sqlite3 dari package.json
+//   5. Jalankan: npx prisma migrate dev --name init
+//   6. Jalankan: pnpm seed
 // ============================================
 
 generator client {
@@ -18,9 +23,6 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  // 👆 Untuk development pakai SQLite (file lokal)
-  //    Untuk production, ganti provider ke "postgresql"
-  //    dan URL ke connection string PostgreSQL (via prisma.config.ts)
 }
 
 // ============================================
